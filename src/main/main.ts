@@ -21,12 +21,9 @@ const createWindow = () => {
 
     // and load the index.html of the app.
     if (MAIN_WINDOW_VITE_DEV_SERVER_URL) {
-        console.log(MAIN_WINDOW_VITE_DEV_SERVER_URL, "MAIN_WINDOW_VITE_DEV_SERVER_URL")
-        console.log(path.join(__dirname, `../renderer/${MAIN_WINDOW_VITE_NAME}/index.html`), "Local")
-
         mainWindow.loadURL(MAIN_WINDOW_VITE_DEV_SERVER_URL);
+        mainWindow.webContents.openDevTools()
     } else {
-        console.log(path.join(__dirname, `../renderer/${MAIN_WINDOW_VITE_NAME}/index.html`), "Production")
         mainWindow.loadFile(path.join(__dirname, `../renderer/${MAIN_WINDOW_VITE_NAME}/index.html`));
     }
 
